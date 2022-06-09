@@ -1,0 +1,29 @@
+@mixin flexHorizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexSpaceHorizontal {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@mixin flexVertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin flexSpaceBetweenHorizontal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flexLeftProject {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}

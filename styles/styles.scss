@@ -1,0 +1,1407 @@
+@import "_variables";
+@import "_layout";
+@import "_components";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: $accentColour1;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes nav-up {
+  0% {
+    top: 0px;
+  }
+
+  100% {
+    top: -100px;
+  }
+}
+
+@keyframes nav-down {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.appear {
+  opacity: 1;
+}
+
+#nav {
+  background-color: $backgroundColour;
+  @include flexSpaceBetweenHorizontal();
+  padding: 3em;
+  gap: 2em;
+  height: 50px;
+  position: fixed;
+  transition: top 4s ease-in-out;
+  width: 100%;
+  z-index: 999;
+
+  img {
+    width: 2em;
+  }
+
+  .nav-right {
+    display: flex;
+    gap: 1.5em;
+  }
+
+  .download-resume {
+    display: none;
+    gap: 0.5em;
+
+    a {
+      color: $popColour;
+      font-size: 1em;
+      font-weight: $font-medium;
+    }
+
+    img {
+      width: 1.2em;
+    }
+  }
+  a:hover {
+    color: $popColour;
+    transition: 0.25s ease-in-out;
+  }
+}
+
+#home {
+  background-color: $backgroundColour;
+
+  .home-container {
+    @include flexVertical();
+    height: 100vh;
+    padding-left: 2em;
+
+    .wrapper {
+      @include flexVertical();
+      margin: 0 auto;
+      gap: 1.75em;
+    }
+
+    .home-heading {
+      line-height: 2.1em;
+
+      .line1 {
+        font-size: 1.1em;
+        color: $popColour;
+      }
+
+      .line2 {
+        font-size: 2em;
+        color: $accentColour1;
+      }
+      .line3 {
+        padding-top: 2.75px;
+        font-size: 1.25em;
+        color: $accentColour2;
+      }
+    }
+
+    .home-subheading {
+      width: 100%;
+      p {
+        font-size: 0.65em;
+        color: $accentColour2;
+      }
+    }
+
+    .projects {
+      @include flexHorizontal();
+      font-size: 0.85em;
+      color: $accentColour1;
+      border: 1.5px solid $popColour;
+      padding: 5px;
+      width: 5.75em;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  .fixed-links,
+  .fixed-name {
+    visibility: hidden;
+  }
+}
+
+#projects {
+  background-color: $backgroundColour;
+  padding: $padding;
+  margin-top: -10em;
+
+  h1 {
+    @include flexHorizontal();
+    color: $accentColour1;
+    font-size: 2.5em;
+  }
+
+  h1:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    bottom: 10px;
+    width: 100%;
+    border-top: 2px solid $popColour;
+  }
+
+  .project-page-container-desk {
+    display: none;
+  }
+
+  .project-page-container-mob {
+    @include flexVertical();
+    gap: 7em;
+    text-align: center;
+
+    .project-container1,
+    .project-container2,
+    .project-container3 {
+      @include flexVertical();
+      padding-top: 5rem;
+
+      gap: 1.5em;
+
+      h2 {
+        color: $popColour;
+        font-size: 2em;
+      }
+
+      h3 {
+        font-size: 1.75em;
+      }
+
+      img {
+        max-width: 100%;
+        opacity: 0.75;
+      }
+
+      .project-card {
+        @include flexVertical();
+        @include boxShadowLeft();
+
+        gap: 1.25em;
+        padding: 1em;
+        background-color: $cardColour;
+
+        p {
+          font-size: 0.75em;
+          background-color: transparent;
+        }
+
+        .project-links {
+          @include flexSpaceHorizontal();
+          background-color: transparent;
+
+          img {
+            width: 1.5em;
+            background-color: transparent;
+          }
+
+          h3 {
+            font-size: 0.9em;
+            background-color: transparent;
+          }
+
+          a {
+            background-color: transparent;
+          }
+
+          .view-website,
+          .source-code {
+            @include flexHorizontal();
+            gap: 0.5em;
+            font-size: 0.9em;
+            border: 1px solid $popColour;
+            padding: 0.35em;
+            color: $accentColour2;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+
+    // Unique styling to certain things in projects
+
+    .project-container2 {
+      .project-card {
+        box-shadow: 11px 14px 4px 0px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+}
+
+#about {
+  background-color: $backgroundColour;
+  padding: $padding;
+  padding-top: 10rem;
+
+  h1 {
+    @include flexHorizontal();
+    color: $accentColour1;
+    padding-bottom: 10rem;
+    font-size: 2.5em;
+  }
+
+  h1:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    bottom: 10px;
+    width: 100%;
+    border-top: 2px solid $popColour;
+  }
+
+  .about-page-container {
+    @include flexVertical();
+    text-align: center;
+
+    .about-me {
+      h2 {
+        font-size: 1.75em;
+      }
+
+      p {
+        color: $accentColour2;
+        font-size: 0.8em;
+        margin-top: 2em;
+      }
+
+      img {
+        max-width: 100%;
+        border-radius: 12.5px;
+        margin-top: $paddingHeader;
+      }
+    }
+
+    .skills {
+      h2 {
+        color: $accentColour1;
+        margin-top: $paddingHeader;
+        font-size: 1.5em;
+      }
+    }
+
+    .skills-container {
+      display: flex;
+      justify-content: space-around;
+      flex-flow: row wrap;
+      max-width: 80%;
+      margin: 0 auto;
+      gap: 2em;
+      margin-top: $paddingHeader;
+
+      .skill {
+        @include skillCardShadow();
+        @include flexVertical();
+        align-items: center;
+        border-radius: 10px;
+        padding: 10px;
+        width: 100px;
+        height: 100px;
+        gap: 1em;
+
+        img {
+          width: 30px;
+        }
+
+        p {
+          color: $accentColour2;
+        }
+      }
+    }
+  }
+}
+
+#contact {
+  background-color: $backgroundColour;
+  height: 100vh;
+
+  .contact-container {
+    @include flexVertical();
+    height: 100%;
+    padding: $padding;
+    text-align: center;
+
+    .contact-header {
+      h1 {
+        @include flexHorizontal();
+        color: $accentColour1;
+        margin-top: $padding;
+        font-size: 2.5em;
+      }
+
+      p {
+        color: $accentColour2;
+        margin-top: 0.5em;
+      }
+    }
+
+    .contact-info {
+      margin-top: $paddingHeader;
+      @include flexVertical();
+      align-items: center;
+      gap: 3em;
+
+      .email {
+        display: flex;
+
+        div {
+          @include flexHorizontal();
+          background: $popColour;
+          padding: 10px;
+        }
+      }
+
+      .phone {
+        display: flex;
+
+        div {
+          @include flexHorizontal();
+          background-color: $popColour;
+          padding: 10px;
+        }
+      }
+
+      img {
+        width: 2em;
+        background-color: transparent;
+      }
+
+      h2 {
+        @include flexHorizontal();
+        color: $accentColour2;
+        font-size: 1em;
+        border: 1px solid $popColour;
+        padding: 7px;
+        width: 250px;
+      }
+    }
+
+    .contact-links {
+      @include flexHorizontal();
+      margin-top: 2em;
+      gap: 2em;
+      position: relative;
+      right: 20px;
+
+      .instagram-link {
+        img {
+          width: 1.6em;
+        }
+      }
+      img {
+        width: 2em;
+        transition: 0.15s ease-in-out;
+      }
+
+      img:hover {
+        transform: translateY(-5px);
+      }
+    }
+  }
+
+  p {
+    background-color: $backgroundColour;
+    color: $accentColour2;
+    text-align: center;
+    padding-bottom: 0.25em;
+  }
+}
+
+//  portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+
+@media (min-width: 600px) {
+  #nav {
+    img {
+      width: 3em;
+    }
+  }
+
+  #home {
+    .home-container {
+      .wrapper {
+        gap: 1.75em;
+      }
+
+      .home-heading {
+        line-height: 3.25em;
+
+        .line1 {
+          font-size: 1.65em;
+        }
+
+        .line2 {
+          font-size: 3em;
+        }
+        .line3 {
+          padding-top: 2.75px;
+          font-size: 2.25em;
+        }
+      }
+
+      .home-subheading {
+        width: 90%;
+
+        p {
+          font-size: 0.9em;
+        }
+      }
+
+      .projects {
+        font-size: 1.25em;
+        width: 6em;
+      }
+    }
+  }
+
+  #projects {
+    margin-top: -10em;
+
+    h1 {
+      @include flexHorizontal();
+      color: $accentColour1;
+      font-size: 2.5em;
+    }
+
+    h1:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      bottom: 10px;
+      width: 100%;
+      border-top: 2px solid $popColour;
+    }
+
+    .project-page-container-mob {
+      gap: 12em;
+
+      .project-container1,
+      .project-container2,
+      .project-container3 {
+        gap: 1.5em;
+
+        h2 {
+          font-size: 3em;
+        }
+
+        h3 {
+          font-size: 2.25em;
+        }
+
+        img {
+          max-width: 100%;
+        }
+
+        .project-card {
+          gap: 1.25em;
+          padding: 1em;
+
+          p {
+            font-size: 1em;
+          }
+
+          .project-links {
+            img {
+              width: 1.5em;
+            }
+
+            h3 {
+              font-size: 0.9em;
+            }
+
+            .view-website,
+            .source-code {
+              @include flexHorizontal();
+              font-size: 1em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #about {
+    padding-top: 10rem;
+
+    h1 {
+      padding-bottom: 10rem;
+      font-size: 2.5em;
+    }
+
+    .about-page-container {
+      .about-me {
+        h2 {
+          font-size: 2.75em;
+        }
+
+        p {
+          color: $accentColour2;
+          font-size: 1.1em;
+          margin-top: 2em;
+        }
+
+        img {
+          width: 50%;
+          border-radius: 12.5px;
+          margin-top: $paddingHeader;
+        }
+      }
+
+      .skills {
+        h2 {
+          color: $accentColour1;
+          margin-top: 5rem;
+          font-size: 1.75em;
+        }
+      }
+
+      .skills-container {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row wrap;
+        max-width: 70%;
+        margin: 0 auto;
+        gap: 2em;
+        margin-top: $paddingHeader;
+
+        .skill {
+          @include skillCardShadow();
+          @include flexVertical();
+          align-items: center;
+          border-radius: 10px;
+          padding: 10px;
+          width: 125px;
+          height: 125px;
+          gap: 1em;
+
+          img {
+            width: 35px;
+          }
+
+          p {
+            color: $accentColour2;
+          }
+        }
+      }
+    }
+  }
+}
+
+// /* tablet, landscape iPad, lo-res laptops ands desktops */
+
+@media (min-width: 800px) {
+  #nav {
+    .nav-right {
+      gap: 2em;
+    }
+
+    .download-resume {
+      @include flexHorizontal();
+    }
+  }
+
+  #home {
+    .fixed-links {
+      visibility: visible !important;
+      position: fixed;
+      bottom: 0;
+      left: $padding;
+      z-index: 1;
+
+      ul {
+        @include flexVertical();
+        gap: 0.75em;
+      }
+
+      li {
+        list-style-type: none;
+      }
+
+      img {
+        width: 2em;
+      }
+    }
+
+    .fixed-links:after {
+      content: "";
+      display: block;
+      width: 1.5px;
+      height: 100px;
+      margin: 0px auto;
+      margin-top: 20px;
+      background-color: $accentColour1;
+    }
+
+    .fixed-name {
+      visibility: visible !important;
+      position: fixed;
+      bottom: 4.5em;
+      right: -1.5em;
+      transform: rotate(90deg);
+      z-index: 1;
+    }
+
+    .home-container {
+      padding-left: 6em;
+
+      .home-heading {
+        line-height: 3.4em;
+
+        .line1 {
+          font-size: 1.8em;
+        }
+
+        .line2 {
+          font-size: 3.3em;
+        }
+        .line3 {
+          font-size: 2.5em;
+        }
+      }
+
+      .home-subheading {
+        p {
+          font-size: 1em;
+          width: 80%;
+        }
+      }
+
+      .projects {
+        font-size: 1em;
+      }
+    }
+  }
+
+  #projects {
+    margin-top: unset;
+    padding: 6em;
+  }
+
+  #about {
+    background-color: $backgroundColour;
+    padding: 6em;
+    padding-top: 5rem;
+
+    .about-page-container {
+      .about-me {
+        img {
+          width: 45%;
+          border-radius: 12.5px;
+          margin-top: $paddingHeader;
+        }
+      }
+    }
+  }
+
+  #contact {
+    .contact-container {
+      @include flexVertical();
+      height: 100%;
+      padding: $padding;
+      text-align: center;
+
+      .contact-header {
+        h1 {
+          @include flexHorizontal();
+          color: $accentColour1;
+          margin-top: $padding;
+          font-size: 3.25em;
+        }
+
+        p {
+          color: $accentColour2;
+          font-size: 1.25em;
+          width: 75%;
+          margin: 0 auto;
+          margin-top: 0.5em;
+        }
+      }
+
+      .contact-info {
+        margin-top: $paddingHeader;
+        @include flexVertical();
+        align-items: center;
+        gap: 3em;
+
+        .email {
+          display: flex;
+
+          div {
+            @include flexHorizontal();
+            background: $popColour;
+            padding: 10px;
+          }
+        }
+
+        .phone {
+          display: flex;
+
+          div {
+            @include flexHorizontal();
+            background-color: $popColour;
+            padding: 10px;
+          }
+        }
+
+        img {
+          width: 2em;
+          background-color: transparent;
+        }
+
+        h2 {
+          @include flexHorizontal();
+          color: $accentColour2;
+          font-size: 1.25em;
+          border: 1px solid $popColour;
+          padding: 7px;
+          width: 400px;
+        }
+      }
+
+      .contact-links {
+        @include flexHorizontal();
+        margin-top: 2em;
+        gap: 2em;
+        position: relative;
+        right: 20px;
+
+        .instagram-link {
+          img {
+            width: 2em;
+          }
+        }
+        img {
+          width: 2.4em;
+        }
+      }
+    }
+  }
+}
+
+// /* big landscape tablets, laptops, and desktops */
+
+@media (min-width: 1025px) {
+  #nav {
+    .nav-right {
+      gap: 2em;
+      font-size: 1.25em;
+    }
+  }
+
+  #home {
+    .home-container {
+      .wrapper {
+        gap: 4em;
+      }
+
+      .home-heading {
+        line-height: 5em;
+
+        .line1 {
+          font-size: 2.5em;
+        }
+
+        .line2 {
+          font-size: 4.5em;
+        }
+        .line3 {
+          font-size: 3.5em;
+        }
+      }
+
+      .home-subheading {
+        p {
+          font-size: 1.25em;
+          width: 75%;
+        }
+      }
+
+      .projects {
+        width: 10em;
+        a {
+          font-size: 1.25em;
+        }
+      }
+    }
+  }
+
+  #projects {
+    margin-top: unset;
+
+    h1 {
+      @include flexHorizontal();
+      color: $accentColour1;
+      font-size: 2.5em;
+    }
+
+    h1:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      bottom: 10px;
+      width: 100%;
+      border-top: 2px solid $popColour;
+    }
+
+    .project-page-container-desk {
+      @include flexVertical();
+      gap: 15em;
+
+      h1 {
+        width: 60%;
+      }
+
+      .project-container1,
+      .project-container3 {
+        @include flexHorizontal();
+
+        .project-image {
+          width: 50%;
+          position: relative;
+
+          img {
+            width: 100%;
+            vertical-align: top;
+          }
+
+          .overlay {
+            background: rgba(113, 64, 255, 0.3);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            transition: 0.25s ease-in-out;
+          }
+
+          .overlay:hover {
+            background: none;
+          }
+        }
+
+        .project-info {
+          @include flexVertical();
+          gap: 2.25em;
+          width: 50%;
+
+          .project-title {
+            text-align: right;
+            h2 {
+              color: $popColour;
+              font-size: 2.5em;
+            }
+            h3 {
+              color: $accentColour1;
+              font-size: 2em;
+            }
+          }
+
+          .project-card-text {
+            text-align: right;
+            background-color: $cardColour;
+            padding: 1em;
+            position: relative;
+            z-index: 1;
+            width: 110%;
+            left: -10%;
+            @include boxShadowLeft();
+
+            p {
+              color: $accentColour2;
+              font-size: 0.75em;
+            }
+          }
+
+          .project-links {
+            @include flexHorizontal();
+            justify-content: flex-end;
+            gap: 3em;
+
+            .view-website,
+            .source-code {
+              @include flexHorizontal();
+              font-size: 0.65em;
+              gap: 0.5em;
+              border: 1px solid $popColour;
+              padding: 0.35em;
+
+              img {
+                width: 2em;
+              }
+            }
+          }
+        }
+      }
+
+      .project-container2 {
+        @include flexLeftProject();
+
+        .project-image {
+          width: 50%;
+          position: relative;
+
+          img {
+            width: 100%;
+            vertical-align: top;
+          }
+
+          .overlay {
+            background: rgba(113, 64, 255, 0.3);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            transition: 0.25s ease-in-out;
+          }
+
+          .overlay:hover {
+            background: none;
+          }
+        }
+
+        .project-info {
+          @include flexVertical();
+          gap: 2.25em;
+          width: 50%;
+
+          .project-title {
+            text-align: left;
+            h2 {
+              color: $popColour;
+              font-size: 2.5em;
+            }
+            h3 {
+              color: $accentColour1;
+              font-size: 2em;
+            }
+          }
+
+          .project-card-text {
+            text-align: left;
+            background-color: $cardColour;
+            padding: 1em;
+            position: relative;
+            z-index: 1;
+            width: 110%;
+            @include boxShadowRight();
+
+            p {
+              color: $accentColour2;
+              font-size: 0.75em;
+            }
+          }
+
+          .project-links {
+            @include flexHorizontal();
+            justify-content: flex-start;
+            gap: 3em;
+
+            .view-website,
+            .source-code {
+              @include flexHorizontal();
+              font-size: 0.65em;
+              gap: 0.5em;
+              border: 1px solid $popColour;
+              padding: 0.35em;
+
+              img {
+                width: 2em;
+              }
+            }
+          }
+        }
+      }
+    }
+    .project-page-container-mob {
+      display: none;
+    }
+  }
+
+  #about {
+    padding-top: 10rem;
+
+    .about-page-container {
+      h1 {
+        width: 60%;
+      }
+
+      .about-me {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: left;
+        gap: 4em;
+
+        .portrait {
+          width: 40%;
+        }
+
+        .info {
+          width: 60%;
+        }
+
+        h2 {
+          font-size: 2.5em;
+        }
+
+        p {
+          color: $accentColour2;
+          font-size: 1em;
+          margin-top: 2em;
+        }
+
+        img {
+          width: 325px;
+          border-radius: 12.5px;
+          margin-top: unset;
+        }
+      }
+
+      .skills {
+        padding-top: 5rem;
+
+        h2 {
+          color: $accentColour1;
+          margin-top: 5rem;
+          font-size: 1.75em;
+        }
+      }
+
+      .skills-container {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row wrap;
+        max-width: 40%;
+        margin: 0 auto;
+        gap: 2em;
+        margin-top: $paddingHeader;
+
+        .skill {
+          @include skillCardShadow();
+          @include flexVertical();
+          align-items: center;
+          border-radius: 10px;
+          padding: 10px;
+          width: 125px;
+          height: 125px;
+          gap: 1em;
+
+          img {
+            width: 35px;
+          }
+
+          p {
+            color: $accentColour2;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* hi-res laptops and desktops */
+
+@media (min-width: 1281px) {
+  #home {
+    .home-container {
+      padding-left: unset;
+    }
+  }
+
+  #projects {
+    margin-top: unset;
+
+    h1 {
+      font-size: clamp(3.5rem, 4rem, 4rem);
+    }
+
+    h1:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      bottom: 10px;
+      width: 100%;
+      border-top: 2px solid $popColour;
+    }
+
+    .project-page-container-desk {
+      @include flexVertical();
+      gap: 15em;
+
+      h1 {
+        font-size: clamp(2rem, 4rem, 4.5rem);
+      }
+
+      .project-container1,
+      .project-container3 {
+        @include flexHorizontal();
+
+        .project-image {
+          max-width: 60%;
+          position: relative;
+
+          img {
+            width: 100%;
+            vertical-align: top;
+          }
+
+          .overlay {
+            background: rgba(113, 64, 255, 0.3);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            transition: 0.25s ease-in-out;
+          }
+
+          .overlay:hover {
+            background: none;
+          }
+        }
+
+        .project-info {
+          @include flexVertical();
+          gap: 2.25em;
+          width: 50%;
+
+          .project-title {
+            text-align: right;
+            h2 {
+              color: $popColour;
+              font-size: clamp(2rem, 3.25rem, 3.75rem);
+            }
+            h3 {
+              color: $accentColour1;
+              font-size: clamp(2rem, 3.25rem, 3.75rem);
+            }
+          }
+
+          .project-card-text {
+            text-align: right;
+            background-color: $cardColour;
+            padding: 1.25em;
+            position: relative;
+            z-index: 1;
+            width: 105%;
+
+            left: -5%;
+            @include boxShadowLeft();
+
+            p {
+              color: $accentColour2;
+              font-size: clamp(0.75rem, 1rem, 1.25rem);
+            }
+          }
+
+          .project-links {
+            @include flexHorizontal();
+            justify-content: flex-end;
+            gap: 3em;
+
+            .view-website,
+            .source-code {
+              @include flexHorizontal();
+              font-size: clamp(0.65rem, 0.7rem, 0.725rem);
+              gap: 0.5em;
+              border: 1px solid $popColour;
+              padding: 0.35em;
+
+              img {
+                width: 2em;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .project-container2 {
+      .project-image {
+        max-width: 60%;
+        position: relative;
+
+        img {
+          width: 100%;
+          vertical-align: top;
+        }
+
+        .overlay {
+          background: rgba(113, 64, 255, 0.3);
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          transition: 0.25s ease-in-out;
+        }
+
+        .overlay:hover {
+          background: none;
+        }
+      }
+
+      .project-info {
+        gap: 2.25em;
+        width: 50%;
+
+        .project-title {
+          text-align: left;
+          h2 {
+            color: $popColour;
+            font-size: clamp(2rem, 3.25rem, 3.75rem) !important;
+          }
+          h3 {
+            color: $accentColour1;
+            font-size: clamp(2rem, 3.25rem, 3.75rem) !important;
+          }
+        }
+
+        .project-card-text {
+          text-align: left;
+          background-color: $cardColour;
+          padding: 1em;
+          position: relative;
+          z-index: 1;
+          width: 105%;
+
+          p {
+            color: $accentColour2;
+            font-size: clamp(0.75rem, 1rem, 1.25rem) !important;
+          }
+        }
+
+        .project-links {
+          gap: 3em;
+
+          .view-website,
+          .source-code {
+            font-size: clamp(0.65rem, 0.7rem, 0.725rem) !important;
+            gap: 0.5em;
+            border: 1px solid $popColour;
+            padding: 0.35em;
+
+            img {
+              width: 2em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #about {
+    padding-top: 10rem;
+
+    .about-page-container {
+      h1 {
+        width: 50%;
+        font-size: clamp(2rem, 4rem, 4.5rem);
+      }
+
+      .about-me {
+        display: flex;
+        flex-direction: row-reverse;
+        max-width: 70%;
+        gap: 3em;
+
+        .portrait {
+          width: 50%;
+        }
+
+        .info {
+          width: 80%;
+        }
+
+        h2 {
+          font-size: 2.5em;
+        }
+
+        p {
+          color: $accentColour2;
+          font-size: 1em;
+          margin-top: 2em;
+        }
+
+        img {
+          width: 350px;
+          border-radius: 12.5px;
+          margin-top: unset;
+        }
+      }
+
+      .skills {
+        padding-top: 5rem;
+
+        h2 {
+          color: $accentColour1;
+          margin-top: 5rem;
+          font-size: 1.75em;
+        }
+      }
+
+      .skills-container {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row wrap;
+        margin: 0 auto;
+        gap: 4em;
+        margin-top: $paddingHeader;
+
+        .skill {
+          @include skillCardShadow();
+          @include flexVertical();
+          align-items: center;
+          border-radius: 10px;
+          padding: 10px;
+          width: 175px;
+          height: 175px;
+          gap: 1em;
+
+          img {
+            width: 45px;
+          }
+
+          p {
+            color: $accentColour2;
+            font-size: 1.25em;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  #projects {
+    padding: 19rem;
+  }
+
+  #about {
+    padding: 19rem;
+    padding-top: 5rem;
+
+    .about-me {
+      padding-top: 5rem;
+    }
+  }
+}
